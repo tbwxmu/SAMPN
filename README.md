@@ -3,7 +3,7 @@
 
 ## Introduction
 This is a PyTorch implementation of the research: [A Self-Attention Based Message Passing Neural Network for Identifying Structure-Property Relationships](https://github.com/tbwxmu/SAMPN/SAMPN_git.png)
-![Graph abstract](https://github.com/tbwxmu/SAMPN/SAMPN_git.png) 
+![Graph abstract](https://github.com/tbwxmu/SAMPN/blob/master/image/Graphical%20abstract.png) 
 
 ## Environment
 ```
