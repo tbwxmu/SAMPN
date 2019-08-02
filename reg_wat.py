@@ -51,9 +51,6 @@ if __name__ == '__main__':
 
 
     args.attention=True
-    args.message_attention=False
-    args.global_attention=False
-    args.message_attention_heads=1
     args.log_dir=None
 
     print(args)

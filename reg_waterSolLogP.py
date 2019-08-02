@@ -25,7 +25,7 @@ if __name__ == '__main__':
     args.hidden_size=384
     args.sumstyle=True
     args.seed=3032
-    args.gpuUSE=True
+    args.gpuUSE=False
     args.gpu=1
 
 
@@ -51,9 +51,6 @@ if __name__ == '__main__':
 
 
     args.attention=True
-    args.message_attention=False
-    args.global_attention=False
-    args.message_attention_heads=1
     args.log_dir=None
 
     print(args)

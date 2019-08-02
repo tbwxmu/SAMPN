@@ -5,8 +5,8 @@ from utils import create_logger
 if __name__ == '__main__':
     args = parse_train_args()
 
-    args.num_folds=10
-    args.epochs =50
+    args.num_folds=1
+    args.epochs =1
     args.ensemble_size=1
     args.batch_size=128
 
@@ -35,11 +35,6 @@ if __name__ == '__main__':
 
     args.diff_depth_weights=False
     args.layers_per_message=1
-
-
-    args.message_attention=False
-    args.global_attention=False
-    args.message_attention_heads=1
     args.log_dir=None
 
     print(args)

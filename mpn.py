@@ -268,9 +268,6 @@ class MPNEncoder(nn.Module):
         self.layer_norm=args.layer_norm
 
         self.attention = args.attention
-        self.message_attention = args.message_attention
-        self.global_attention = args.global_attention
-        self.message_attention_heads = args.message_attention_heads
         self.sumstyle=args.sumstyle
         if self.features_only:
             return
@@ -291,15 +288,6 @@ class MPNEncoder(nn.Module):
         input_dim = self.atom_fdim if self.atom_messages else self.bond_fdim
 
         self.W_i = nn.Linear(input_dim, self.hidden_size, bias=self.bias)
-
-        if self.message_attention:
-            self.num_heads = self.message_attention_heads
-            w_h_input_size = self.num_heads * self.hidden_size
-            self.W_ma = nn.ModuleList([nn.Linear(self.hidden_size, self.hidden_size, bias=self.bias)
-                                       for _ in range(self.num_heads)])
-        if self.global_attention:
-            self.W_ga1 = nn.Linear(self.hidden_size, self.hidden_size, bias=False)
-            self.W_ga2 = nn.Linear(self.hidden_size, self.hidden_size)
 
         if self.atom_messages:
             w_h_input_size = self.hidden_size + self.bond_fdim
@@ -368,20 +356,6 @@ class MPNEncoder(nn.Module):
 
         message = self.act_func(input)
 
-        if self.message_attention:
-            b2b = mol_graph.get_b2b()
-            if next(self.parameters()).is_cuda:
-                b2b = b2b.cuda()
-            message_attention_mask = (b2b != 0).float()
-        if self.global_attention:
-            global_attention_mask = torch.zeros(mol_graph.n_bonds, mol_graph.n_bonds)
-            for start, length in b_scope:
-                for i in range(start, start + length):
-                    global_attention_mask[i, start:start + length] = 1
-            if next(self.parameters()).is_cuda:
-                global_attention_mask = global_attention_mask.cuda()
-
-
         for depth in range(self.depth - 1):
             if self.undirected:
                 message = (message + message[b2revb]) / 2
@@ -391,45 +365,16 @@ class MPNEncoder(nn.Module):
                 nei_f_bonds = index_select_ND(f_bonds, a2b)
                 nei_message = torch.cat((nei_a_message, nei_f_bonds), dim=2)
                 message = nei_message.sum(dim=1)
-            if self.message_attention:
-
-                nei_message = index_select_ND(message, b2b)
-                message = message.unsqueeze(1).repeat((1, nei_message.size(1), 1))
-                attention_scores = [(self.W_ma[i](nei_message) * message).sum(dim=2)
-                                    for i in range(self.num_heads)]
-                attention_scores = [attention_scores[i] * message_attention_mask + (1 - message_attention_mask) * (-1e+20)
-                                    for i in range(self.num_heads)]
-                attention_weights = [F.softmax(attention_scores[i], dim=1)
-                                     for i in range(self.num_heads)]
-                message_components = [nei_message * attention_weights[i].unsqueeze(2).repeat((1, 1, self.hidden_size))
-                                      for i in range(self.num_heads)]
-                message_components = [component.sum(dim=1) for component in message_components]
-                message = torch.cat(message_components, dim=1)
             else:
-
-
                 nei_a_message = index_select_ND(message, a2b)
                 a_message = nei_a_message.sum(dim=1)
                 rev_message = message[b2revb]
                 message = a_message[b2a] - rev_message
-
-
             message = self.W_h(message)
             message = self.act_func(input + message)
-
             if self.normalize_messages:
                 message = message / message.norm(dim=1, keepdim=True)
-            if self.global_attention:
-                attention_scores = torch.matmul(self.W_ga1(message), message.t())
-                attention_scores = attention_scores * global_attention_mask + (1 - global_attention_mask) * (-1e+20)
-                attention_weights = F.softmax(attention_scores, dim=1)
-                attention_hiddens = torch.matmul(attention_weights, message)
-                attention_hiddens = self.act_func(self.W_ga2(attention_hiddens))
-                attention_hiddens = self.dropout_layer(attention_hiddens)
-
-                message = attention_hiddens
-                if viz_dir is not None:
-                    visualize_bond_attention(viz_dir, mol_graph, attention_weights, depth)
+            
             if self.layer_norm:
                 message = self.layer_norm(message)
 

@@ -1,0 +1,377 @@
+{'Foldth': 0,
+ 'activation': 'ReLU',
+ 'atom_messages': False,
+ 'attention': True,
+ 'batch_size': 128,
+ 'bias': False,
+ 'checkpoint_dir': None,
+ 'checkpoint_path': None,
+ 'checkpoint_paths': None,
+ 'class_weights': [],
+ 'cols_to_read': [0, 1, 2],
+ 'config_path': None,
+ 'cuda': False,
+ 'data_filename': 'wat_logP.csvAll_cols.csv_seed3032',
+ 'data_path': 'data_RE2/wat_logP.csvAll_cols.csv',
+ 'dataset_type': 'regression',
+ 'depth': 4,
+ 'diff_depth_weights': True,
+ 'dropout': 0.25,
+ 'ensemble_size': 1,
+ 'epochs': 50,
+ 'features_generator': None,
+ 'features_only': False,
+ 'features_path': None,
+ 'features_scaling': True,
+ 'ffn_hidden_size': 300,
+ 'ffn_num_layers': 2,
+ 'final_lr': 0.0001,
+ 'folds_file': None,
+ 'gpu': 1,
+ 'gpuUSE': False,
+ 'hidden_size': 384,
+ 'init_lr': 0.0001,
+ 'layer_norm': False,
+ 'layers_per_message': 1,
+ 'log_dir': None,
+ 'log_frequency': 10,
+ 'max_data_size': None,
+ 'max_lr': 0.001,
+ 'metric': 'rmse',
+ 'minimize_score': True,
+ 'n_task': 2,
+ 'no_cache': False,
+ 'normalize_messages': False,
+ 'num_folds': 10,
+ 'num_lrs': 1,
+ 'num_tasks': 2,
+ 'quiet': False,
+ 'save_dir': 'save_test',
+ 'save_smiles_splits': False,
+ 'scale': 'normalization',
+ 'seed': 3032,
+ 'separate_test_features_path': None,
+ 'separate_test_path': None,
+ 'separate_val_features_path': None,
+ 'separate_val_path': None,
+ 'show_individual_scores': True,
+ 'split_sizes': [0.8, 0.1, 0.1],
+ 'split_type': 'random',
+ 'sumstyle': True,
+ 'task_names': ['LogP', 'Water solubility {measured}'],
+ 'test': False,
+ 'test_fold_index': None,
+ 'test_size': 542,
+ 'tmp_data_dir': './data_RE2/tmp/',
+ 'train_size': 4339,
+ 'undirected': False,
+ 'use_compound_names': False,
+ 'use_input_features': None,
+ 'val_fold_index': None,
+ 'val_size': 543,
+ 'warmup_epochs': 2.0}
+Building model 0
+{'Foldth': 0,
+ 'activation': 'ReLU',
+ 'atom_messages': False,
+ 'attention': True,
+ 'batch_size': 128,
+ 'bias': False,
+ 'checkpoint_dir': None,
+ 'checkpoint_path': None,
+ 'checkpoint_paths': None,
+ 'class_weights': [],
+ 'cols_to_read': [0, 1, 2],
+ 'config_path': None,
+ 'cuda': False,
+ 'data_filename': 'wat_logP.csvAll_cols.csv_seed3032',
+ 'data_path': 'data_RE2/wat_logP.csvAll_cols.csv',
+ 'dataset_type': 'regression',
+ 'depth': 4,
+ 'diff_depth_weights': True,
+ 'dropout': 0.25,
+ 'ensemble_size': 1,
+ 'epochs': 50,
+ 'features_generator': None,
+ 'features_only': False,
+ 'features_path': None,
+ 'features_scaling': True,
+ 'ffn_hidden_size': 300,
+ 'ffn_num_layers': 2,
+ 'final_lr': 0.0001,
+ 'folds_file': None,
+ 'gpu': 1,
+ 'gpuUSE': False,
+ 'hidden_size': 384,
+ 'init_lr': 0.0001,
+ 'layer_norm': False,
+ 'layers_per_message': 1,
+ 'log_dir': None,
+ 'log_frequency': 10,
+ 'max_data_size': None,
+ 'max_lr': 0.001,
+ 'metric': 'rmse',
+ 'minimize_score': True,
+ 'n_task': 2,
+ 'no_cache': False,
+ 'normalize_messages': False,
+ 'num_folds': 10,
+ 'num_lrs': 1,
+ 'num_tasks': 2,
+ 'quiet': False,
+ 'save_dir': 'save_test',
+ 'save_smiles_splits': False,
+ 'scale': 'normalization',
+ 'seed': 3032,
+ 'separate_test_features_path': None,
+ 'separate_test_path': None,
+ 'separate_val_features_path': None,
+ 'separate_val_path': None,
+ 'show_individual_scores': True,
+ 'split_sizes': [0.8, 0.1, 0.1],
+ 'split_type': 'random',
+ 'sumstyle': True,
+ 'task_names': ['LogP', 'Water solubility {measured}'],
+ 'test': False,
+ 'test_fold_index': None,
+ 'test_size': 542,
+ 'tmp_data_dir': './data_RE2/tmp/',
+ 'train_size': 4339,
+ 'undirected': False,
+ 'use_compound_names': False,
+ 'use_input_features': None,
+ 'val_fold_index': None,
+ 'val_size': 543,
+ 'warmup_epochs': 2.0}
+Building model 0
+QSARmodel(
+  (encoder): MPN(
+    (encoder): MPNEncoder(
+      (dropout_layer): Dropout(p=0.25)
+      (act_func): ReLU()
+      (W_i): Linear(in_features=150, out_features=384, bias=False)
+      (W_h): Sequential(
+        (0): Linear(in_features=384, out_features=384, bias=False)
+        (1): Linear(in_features=384, out_features=384, bias=False)
+        (2): Linear(in_features=384, out_features=384, bias=False)
+        (3): Linear(in_features=384, out_features=384, bias=False)
+      )
+      (W_ah): Linear(in_features=139, out_features=384, bias=True)
+      (W_o): Linear(in_features=384, out_features=384, bias=True)
+      (W_a): Linear(in_features=384, out_features=384, bias=False)
+      (W_b): Linear(in_features=384, out_features=384, bias=True)
+    )
+  )
+  (ffn): Sequential(
+    (0): Dropout(p=0.25)
+    (1): Linear(in_features=384, out_features=300, bias=True)
+    (2): ReLU()
+    (3): Dropout(p=0.25)
+    (4): Linear(in_features=300, out_features=2, bias=True)
+  )
+)
+mdoel:0>>>>Number of parameters = 1,260,422
+Validation rmse = 1.528813
+Validation LogP rmse = 1.197631
+Validation Water solubility {measured} rmse = 1.859995
+Model 0 the parametrs updated in model.pt as best validation rmse = 1.528813 on epoch 1
+{'Foldth': 0,
+ 'activation': 'ReLU',
+ 'atom_messages': False,
+ 'attention': True,
+ 'batch_size': 128,
+ 'bias': False,
+ 'checkpoint_dir': None,
+ 'checkpoint_path': None,
+ 'checkpoint_paths': None,
+ 'class_weights': [],
+ 'cols_to_read': [0, 1, 2],
+ 'config_path': None,
+ 'cuda': False,
+ 'data_filename': 'wat_logP.csvAll_cols.csv_seed3032',
+ 'data_path': 'data_RE2/wat_logP.csvAll_cols.csv',
+ 'dataset_type': 'regression',
+ 'depth': 4,
+ 'diff_depth_weights': True,
+ 'dropout': 0.25,
+ 'ensemble_size': 1,
+ 'epochs': 50,
+ 'features_generator': None,
+ 'features_only': False,
+ 'features_path': None,
+ 'features_scaling': True,
+ 'ffn_hidden_size': 300,
+ 'ffn_num_layers': 2,
+ 'final_lr': 0.0001,
+ 'folds_file': None,
+ 'gpu': 1,
+ 'gpuUSE': False,
+ 'hidden_size': 384,
+ 'init_lr': 0.0001,
+ 'layer_norm': False,
+ 'layers_per_message': 1,
+ 'log_dir': None,
+ 'log_frequency': 10,
+ 'max_data_size': None,
+ 'max_lr': 0.001,
+ 'metric': 'rmse',
+ 'minimize_score': True,
+ 'n_task': 2,
+ 'no_cache': False,
+ 'normalize_messages': False,
+ 'num_folds': 10,
+ 'num_lrs': 1,
+ 'num_tasks': 2,
+ 'quiet': False,
+ 'save_dir': 'save_test',
+ 'save_smiles_splits': False,
+ 'scale': 'normalization',
+ 'seed': 3032,
+ 'separate_test_features_path': None,
+ 'separate_test_path': None,
+ 'separate_val_features_path': None,
+ 'separate_val_path': None,
+ 'show_individual_scores': True,
+ 'split_sizes': [0.8, 0.1, 0.1],
+ 'split_type': 'random',
+ 'sumstyle': True,
+ 'task_names': ['LogP', 'Water solubility {measured}'],
+ 'test': False,
+ 'test_fold_index': None,
+ 'test_size': 542,
+ 'tmp_data_dir': './data_RE2/tmp/',
+ 'train_size': 4339,
+ 'undirected': False,
+ 'use_compound_names': False,
+ 'use_input_features': None,
+ 'val_fold_index': None,
+ 'val_size': 543,
+ 'warmup_epochs': 2.0}
+Building model 0
+QSARmodel(
+  (encoder): MPN(
+    (encoder): MPNEncoder(
+      (dropout_layer): Dropout(p=0.25)
+      (act_func): ReLU()
+      (W_i): Linear(in_features=150, out_features=384, bias=False)
+      (W_h): Sequential(
+        (0): Linear(in_features=384, out_features=384, bias=False)
+        (1): Linear(in_features=384, out_features=384, bias=False)
+        (2): Linear(in_features=384, out_features=384, bias=False)
+        (3): Linear(in_features=384, out_features=384, bias=False)
+      )
+      (W_ah): Linear(in_features=139, out_features=384, bias=True)
+      (W_o): Linear(in_features=384, out_features=384, bias=True)
+      (W_a): Linear(in_features=384, out_features=384, bias=False)
+      (W_b): Linear(in_features=384, out_features=384, bias=True)
+    )
+  )
+  (ffn): Sequential(
+    (0): Dropout(p=0.25)
+    (1): Linear(in_features=384, out_features=300, bias=True)
+    (2): ReLU()
+    (3): Dropout(p=0.25)
+    (4): Linear(in_features=300, out_features=2, bias=True)
+  )
+)
+mdoel:0>>>>Number of parameters = 1,260,422
+{'Foldth': 0,
+ 'activation': 'ReLU',
+ 'atom_messages': False,
+ 'attention': True,
+ 'batch_size': 128,
+ 'bias': False,
+ 'checkpoint_dir': None,
+ 'checkpoint_path': None,
+ 'checkpoint_paths': None,
+ 'class_weights': [],
+ 'cols_to_read': [0, 1, 2],
+ 'config_path': None,
+ 'cuda': False,
+ 'data_filename': 'wat_logP.csvAll_cols.csv_seed3032',
+ 'data_path': 'data_RE2/wat_logP.csvAll_cols.csv',
+ 'dataset_type': 'regression',
+ 'depth': 4,
+ 'diff_depth_weights': True,
+ 'dropout': 0.25,
+ 'ensemble_size': 1,
+ 'epochs': 50,
+ 'features_generator': None,
+ 'features_only': False,
+ 'features_path': None,
+ 'features_scaling': True,
+ 'ffn_hidden_size': 300,
+ 'ffn_num_layers': 2,
+ 'final_lr': 0.0001,
+ 'folds_file': None,
+ 'gpu': 1,
+ 'gpuUSE': False,
+ 'hidden_size': 384,
+ 'init_lr': 0.0001,
+ 'layer_norm': False,
+ 'layers_per_message': 1,
+ 'log_dir': None,
+ 'log_frequency': 10,
+ 'max_data_size': None,
+ 'max_lr': 0.001,
+ 'metric': 'rmse',
+ 'minimize_score': True,
+ 'n_task': 2,
+ 'no_cache': False,
+ 'normalize_messages': False,
+ 'num_folds': 10,
+ 'num_lrs': 1,
+ 'num_tasks': 2,
+ 'quiet': False,
+ 'save_dir': 'save_test',
+ 'save_smiles_splits': False,
+ 'scale': 'normalization',
+ 'seed': 3032,
+ 'separate_test_features_path': None,
+ 'separate_test_path': None,
+ 'separate_val_features_path': None,
+ 'separate_val_path': None,
+ 'show_individual_scores': True,
+ 'split_sizes': [0.8, 0.1, 0.1],
+ 'split_type': 'random',
+ 'sumstyle': True,
+ 'task_names': ['LogP', 'Water solubility {measured}'],
+ 'test': False,
+ 'test_fold_index': None,
+ 'test_size': 542,
+ 'tmp_data_dir': './data_RE2/tmp/',
+ 'train_size': 4339,
+ 'undirected': False,
+ 'use_compound_names': False,
+ 'use_input_features': None,
+ 'val_fold_index': None,
+ 'val_size': 543,
+ 'warmup_epochs': 2.0}
+Building model 0
+QSARmodel(
+  (encoder): MPN(
+    (encoder): MPNEncoder(
+      (dropout_layer): Dropout(p=0.25)
+      (act_func): ReLU()
+      (W_i): Linear(in_features=150, out_features=384, bias=False)
+      (W_h): Sequential(
+        (0): Linear(in_features=384, out_features=384, bias=False)
+        (1): Linear(in_features=384, out_features=384, bias=False)
+        (2): Linear(in_features=384, out_features=384, bias=False)
+        (3): Linear(in_features=384, out_features=384, bias=False)
+      )
+      (W_ah): Linear(in_features=139, out_features=384, bias=True)
+      (W_o): Linear(in_features=384, out_features=384, bias=True)
+      (W_a): Linear(in_features=384, out_features=384, bias=False)
+      (W_b): Linear(in_features=384, out_features=384, bias=True)
+    )
+  )
+  (ffn): Sequential(
+    (0): Dropout(p=0.25)
+    (1): Linear(in_features=384, out_features=300, bias=True)
+    (2): ReLU()
+    (3): Dropout(p=0.25)
+    (4): Linear(in_features=300, out_features=2, bias=True)
+  )
+)
+mdoel:0>>>>Number of parameters = 1,260,422
