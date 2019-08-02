@@ -2,7 +2,7 @@
 # A Self-Attention Based Message Passing Neural Network for Identifying Structure-Property Relationships
 
 ## Introduction
-This is a PyTorch implementation of the research: [A Self-Attention Based Message Passing Neural Network for Identifying Structure-Property Relationships]
+This is a PyTorch implementation of the research: [A Self-Attention Based Message Passing Neural Network for Identifying Structure-Property Relationships](https://github.com/tbwxmu/SAMPN)
 
 
 ## Environment
@@ -24,8 +24,8 @@ Data file format: </br>
 `python reg_wat.py #replace the data_path and cols_to_read as your want` </br>
 The trained model weights will be also stored in `save_test`. </br>
 ### prediction and visualization
-`python reg_wat.py #replace the data_path and checkpoint_path as your want` </br>
-The trained model weights will be also stored in `save_test`. </br>
+`python viz_wat.py #replace the data_path and checkpoint_path as your want` </br>
+The results of prediction will be also stored in `save_test` and visualization file will be save in png_*. </br>
 ### repeat this work
 bash go_repeat.sh
 
