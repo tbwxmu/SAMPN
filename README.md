@@ -30,4 +30,4 @@ The results of prediction will be also stored in `save_test` and visualization f
 bash go_repeat.sh
 
 ## Acknowledgement
-We thank the previous work by the swansonk14 team. The code in this repository is inspired on [ChemProp](https://github.com/swansonk14/chemprop)
+We thank the previous work by Ramsundar and swansonk14 teams. The code in this repository is inspired on [DeepChem](https://github.com/deepchem/deepchem) and [ChemProp](https://github.com/swansonk14/chemprop)
