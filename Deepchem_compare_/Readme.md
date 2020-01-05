@@ -1,6 +1,7 @@
 ## Compare with DeepChem 
+
 In stalll deepchem on Windows from the source code
-bash```
+```
 git clone https://github.com/deepchem/deepchem.git      # Clone deepchem source code from GitHub
 cd deepchem
 conda create -n dc python=3.6 pip -you  #creat deepchem envoriment in anaconda
@@ -9,6 +10,7 @@ pip install tensorflow-gpu==1.14
 pip install xgboost
 set PYTHONPATH=%PYTHONPATH%;C:\deepchem_download_path
 ```
+
 ## Reproducing the table 3 results
 ```
 python lipo_MPNN.py     #this will get the reult of MPN (Deepchem)b in lipohilicity
